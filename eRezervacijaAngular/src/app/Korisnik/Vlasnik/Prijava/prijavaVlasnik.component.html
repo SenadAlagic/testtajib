@@ -1,0 +1,27 @@
+<body>
+<div class="wrapper">
+  <h1>Log In</h1>
+  <mat-divider></mat-divider>
+  <div class="form">
+  <p id="username">
+    <mat-form-field appearance="fill" class="inputField" >
+      <mat-label>Username</mat-label>
+      <input matInput placeholder="username">
+    </mat-form-field>
+  </p>
+  <p id="password">
+    <mat-form-field appearance="fill" class="inputField">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" placeholder="********">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </p>
+  </div>
+  <a id="lozinkaRepair">Zaboravili ste lozinku?</a> <br>
+  <button mat-raised-button id="loginBtn" color="primary">Login</button>
+  <br>
+  <a routerLink="/putanja-registracijaVlasnik" id="registracija">Nemate korisnički račun? Registrujte se.</a>
+</div>
+</body>

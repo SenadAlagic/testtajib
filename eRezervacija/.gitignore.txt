@@ -1,0 +1,2 @@
+/eRezervacija.Repository/Migrations
+/eRezervacija.API/appsettings

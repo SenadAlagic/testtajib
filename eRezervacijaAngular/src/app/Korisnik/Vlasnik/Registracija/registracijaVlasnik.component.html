@@ -1,0 +1,84 @@
+<body>
+  <h1>Sign Up</h1>
+<div class="wrapper">
+  <div class="opsteInfo">
+    <mat-form-field appearance="fill" id="ime" class="inputOpste">
+      <mat-label>Unesite ime</mat-label>
+      <input matInput placeholder="Ime" [formControl]="ime" required>
+      <mat-error *ngIf="ime.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" id="prezime" class="inputOpste">
+      <mat-label>Unesite prezime</mat-label>
+      <input matInput placeholder="Prezime" [formControl]="prezime">
+      <mat-error *ngIf="prezime.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="inputOpste">
+      <mat-label>Unesite email</mat-label>
+      <input matInput placeholder="pat@example.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid" id="matErorText" >{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="inputOpste">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br>
+    <mat-radio-group aria-label="Spol:">
+      <label style="margin-right: 16px;">Spol:</label>
+      <mat-radio-button value="1">Muško</mat-radio-button>
+      <mat-radio-button value="2">Žensko</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field appearance="fill" id="telefon" class="inputOpste">
+      <mat-label>Unesite broj telefona</mat-label>
+      <input matInput placeholder="Telefon" [formControl]="telefon" required>
+      <mat-error *ngIf="telefon.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="loginInfo">
+    <mat-form-field appearance="fill" id="username" class="inputLogin">
+      <mat-label>Unesite username</mat-label>
+      <input matInput placeholder="Username" [formControl]="username" required>
+      <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="inputField" class="inputLogin">
+      <mat-label>Unesite password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" placeholder="********" [formControl]="password" required id="prviPassword">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="inputField" class="inputLogin">
+      <mat-label>Ponovo unesite password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" placeholder="********" [formControl]="password" required id="drugiPassword">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="validacijaInfo">
+    <mat-form-field appearance="fill" id="brRacuna" class="inputValidacija">
+      <mat-label>Unesite broj bankovnog racuna</mat-label>
+      <input matInput placeholder="Username" [formControl]="brRacuna" required maxlength="16" matTooltip="Potrebno je unijeti podatak zbog uplate novca prilikom rezervacije">
+      <mat-error *ngIf="brRacuna.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" id="brLicneKarte" class="inputValidacija">
+      <mat-label>Unesite broj lične karte</mat-label>
+      <input matInput placeholder="Username" [formControl]="brRacuna" required maxlength="9" matTooltip="Potrebno je unijeti podatak zbog validacije korisnika">
+      <mat-error *ngIf="brLicneKarte.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <div (click)="uploadFile.click()">
+      <button mat-raised-button color="primary">Dodajte vlasnički list</button>
+      <input #uploadFile (change)="upload($event)" id="input-file-id" multiple type='file' class="ng-hide" style="display:none"/><br>
+    </div>
+  </div>
+</div>
+  <div class="buttonForma">
+    <button mat-raised-button id="signupBtn" color="primary">Registrirajte se</button>
+    <br>
+    <a routerLink="/putanja-prijavaVlasnik" id="prijava">Imate korisnički račun? Prijavite se.</a>
+  </div>
+</body>
